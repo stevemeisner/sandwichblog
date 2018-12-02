@@ -1,3 +1,7 @@
+# Gatsby
+.cache
+public
+
 # Logs
 logs
 *.log
