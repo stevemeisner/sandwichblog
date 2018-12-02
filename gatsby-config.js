@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: 'Gatsby + WordPress Starter',
+    title: 'Asheville Sandwich Blog',
   },
   plugins: [
     'gatsby-plugin-react-helmet',
@@ -9,7 +9,7 @@ module.exports = {
       resolve: 'gatsby-source-wordpress',
       options: {
         // The base url to your WP site.
-        baseUrl: '206.81.3.68',
+        baseUrl: 'admin.ashevillesandwichblog.tk',
         // WP.com sites set to true, WP.org set to false
         hostingWPCOM: false,
         // The protocol. This can be http or https.
