@@ -1,7 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
+import lifecycle from 'react-pure-lifecycle';
+import { setupNavBtn } from '../tools/global'
 import Layout from '../components/Layout'
+
+const methods = {
+  componentDidMount(props) {
+    setupNavBtn();
+  }
+};
 
 export const PageTemplate = ({ title, content }) => {
   return (
@@ -44,7 +52,7 @@ Page.propTypes = {
   data: PropTypes.object.isRequired,
 }
 
-export default Page
+export default lifecycle(methods)(Page);
 
 export const pageQuery = graphql`
   query PageById($id: String!) {

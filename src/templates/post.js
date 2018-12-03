@@ -2,8 +2,16 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { graphql, Link } from 'gatsby'
+import lifecycle from 'react-pure-lifecycle';
+import { setupNavBtn } from '../tools/global'
 import Layout from '../components/Layout'
 import SanitizedHTML from 'react-sanitized-html';
+
+const methods = {
+  componentDidMount(props) {
+    setupNavBtn();
+  }
+};
 
 export const BlogPostTemplate = ({
   content,
@@ -90,7 +98,7 @@ BlogPost.propTypes = {
   }),
 }
 
-export default BlogPost
+export default lifecycle(methods)(BlogPost);
 
 export const pageQuery = graphql`
   fragment PostFields on wordpress__POST {

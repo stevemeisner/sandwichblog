@@ -1,9 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link, graphql } from 'gatsby'
+import { setupNavBtn } from '../tools/global'
 import SanitizedHTML from 'react-sanitized-html';
 
 export default class IndexPage extends React.Component {
+  componentDidMount() {
+    setupNavBtn();
+  }
+
   render() {
     const { posts } = this.props
 

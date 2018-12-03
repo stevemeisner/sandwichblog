@@ -1,8 +1,16 @@
 import React from 'react'
 import Helmet from 'react-helmet'
 import { graphql } from 'gatsby'
+import lifecycle from 'react-pure-lifecycle';
+import { setupNavBtn } from '../tools/global'
 import Layout from '../components/Layout'
 import PostList from '../components/PostList'
+
+const methods = {
+  componentDidMount(props) {
+    setupNavBtn();
+  }
+};
 
 const Tag = props => {
   const { data, pageContext } = props
@@ -11,7 +19,7 @@ const Tag = props => {
   const { name: tag } = pageContext
   const title = `${totalCount} post${
     totalCount === 1 ? '' : 's'
-  } with the tag ${tag}`
+    } with the tag ${tag}`
 
   return (
     <Layout>
@@ -21,7 +29,7 @@ const Tag = props => {
   )
 }
 
-export default Tag
+export default lifecycle(methods)(Tag);
 
 export const pageQuery = graphql`
   query TagPage($slug: String!) {

@@ -1,8 +1,16 @@
 import React from 'react'
 import Helmet from 'react-helmet'
 import { graphql } from 'gatsby'
+import lifecycle from 'react-pure-lifecycle';
+import { setupNavBtn } from '../tools/global'
 import Layout from '../components/Layout'
 import PostList from '../components/PostList'
+
+const methods = {
+  componentDidMount(props) {
+    setupNavBtn();
+  }
+};
 
 const Author = props => {
   const { data } = props
@@ -26,7 +34,7 @@ const Author = props => {
   )
 }
 
-export default Author
+export default lifecycle(methods)(Author);
 
 export const pageQuery = graphql`
   query AuthorPage($id: String!) {
