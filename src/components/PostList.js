@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link, graphql } from 'gatsby'
+import SanitizedHTML from 'react-sanitized-html';
 
 export default class IndexPage extends React.Component {
   render() {
@@ -20,7 +21,7 @@ export default class IndexPage extends React.Component {
             >
               <p>
                 <Link className="has-text-primary" to={post.slug}>
-                  {post.title}
+                  <SanitizedHTML html={post.title} />
                 </Link>
                 <span> &bull; </span>
                 <small>

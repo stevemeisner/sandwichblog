@@ -23,11 +23,14 @@ const Navbar = () => (
           <div className="navbar-brand">
             <Link to="/" className="navbar-item">
               <figure className="image">
-                <img src={logo} alt="Kaldi" style={{ width: '88px' }} />
+                <img src={logo} alt="Kaldi" style={{ width: '200px' }} />
               </figure>
             </Link>
           </div>
-          <div className="navbar-start">
+          {/* <div className="navbar-start">
+            
+          </div> */}
+          <div className="navbar-end">
             {data.allWordpressPage.edges.map(edge => (
               <Link
                 className="navbar-item"
@@ -37,18 +40,6 @@ const Navbar = () => (
                 {edge.node.title}
               </Link>
             ))}
-          </div>
-          <div className="navbar-end">
-            <a
-              className="navbar-item"
-              href="https://github.com/GatsbyCentral/gatsby-starter-wordpress"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <span className="icon">
-                <img src={github} alt="Github" />
-              </span>
-            </a>
           </div>
         </div>
       </nav>
