@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { graphql, Link } from 'gatsby'
 import Layout from '../components/Layout'
+import SanitizedHTML from 'react-sanitized-html';
 
 export const BlogPostTemplate = ({
   content,
@@ -16,9 +17,9 @@ export const BlogPostTemplate = ({
     <section className="section">
       <div className="container content">
         <div className="columns">
-          <div className="column is-10 is-offset-1">
+          <div className="column is-10">
             <h1 className="title is-size-2 has-text-weight-bold is-bold-light">
-              {title}
+              <SanitizedHTML html={title} />
             </h1>
             <div dangerouslySetInnerHTML={{ __html: content }} />
             <div style={{ marginTop: `4rem` }}>
@@ -33,7 +34,7 @@ export const BlogPostTemplate = ({
                     {categories.map(category => (
                       <li key={`${category.slug}cat`}>
                         <Link to={`/categories/${category.slug}/`}>
-                          {category.name}
+                          <SanitizedHTML html={category.name} />
                         </Link>
                       </li>
                     ))}
@@ -46,7 +47,7 @@ export const BlogPostTemplate = ({
                   <ul className="taglist">
                     {tags.map(tag => (
                       <li key={`${tag.slug}tag`}>
-                        <Link to={`/tags/${tag.slug}/`}>{tag.name}</Link>
+                        <Link to={`/tags/${tag.slug}/`}><SanitizedHTML html={tag.name} /></Link>
                       </li>
                     ))}
                   </ul>
