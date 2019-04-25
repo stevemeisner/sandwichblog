@@ -1,17 +1,18 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
-import lifecycle from 'react-pure-lifecycle';
+import Img from 'gatsby-image'
+import lifecycle from 'react-pure-lifecycle'
 import { setupNavBtn } from '../tools/global'
 import Layout from '../components/Layout'
 
 const methods = {
   componentDidMount(props) {
-    setupNavBtn();
-  }
-};
+    setupNavBtn()
+  },
+}
 
-export const PageTemplate = ({ title, content }) => {
+export const PageTemplate = ({ title, content, featured_media }) => {
   return (
     <section className="section section--gradient">
       <div className="container">
@@ -21,6 +22,11 @@ export const PageTemplate = ({ title, content }) => {
               <h2 className="title is-size-3 has-text-weight-bold is-bold-light">
                 {title}
               </h2>
+              {featured_media && (
+                <div className="featured-media">
+                  <Img fluid={featured_media.localFile.childImageSharp.fluid} />
+                </div>
+              )}
               <div
                 className="content"
                 dangerouslySetInnerHTML={{ __html: content }}
@@ -36,6 +42,7 @@ export const PageTemplate = ({ title, content }) => {
 PageTemplate.propTypes = {
   title: PropTypes.string.isRequired,
   content: PropTypes.string,
+  featured_media: PropTypes.object,
 }
 
 const Page = ({ data }) => {
@@ -43,7 +50,11 @@ const Page = ({ data }) => {
 
   return (
     <Layout>
-      <PageTemplate title={page.title} content={page.content} />
+      <PageTemplate
+        title={page.title}
+        content={page.content}
+        featured_media={page.featured_media}
+      />
     </Layout>
   )
 }
@@ -52,13 +63,22 @@ Page.propTypes = {
   data: PropTypes.object.isRequired,
 }
 
-export default lifecycle(methods)(Page);
+export default lifecycle(methods)(Page)
 
 export const pageQuery = graphql`
   query PageById($id: String!) {
     wordpressPage(id: { eq: $id }) {
       title
       content
+      featured_media {
+        localFile {
+          childImageSharp {
+            fluid(maxWidth: 700) {
+              ...GatsbyImageSharpFluid_withWebp
+            }
+          }
+        }
+      }
     }
   }
 `
