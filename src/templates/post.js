@@ -2,16 +2,16 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { graphql, Link } from 'gatsby'
-import lifecycle from 'react-pure-lifecycle';
+import lifecycle from 'react-pure-lifecycle'
 import { setupNavBtn } from '../tools/global'
 import Layout from '../components/Layout'
-import SanitizedHTML from 'react-sanitized-html';
+import SanitizedHTML from 'react-sanitized-html'
 
 const methods = {
   componentDidMount(props) {
-    setupNavBtn();
-  }
-};
+    setupNavBtn()
+  },
+}
 
 export const BlogPostTemplate = ({
   content,
@@ -55,7 +55,9 @@ export const BlogPostTemplate = ({
                   <ul className="taglist">
                     {tags.map(tag => (
                       <li key={`${tag.slug}tag`}>
-                        <Link to={`/tags/${tag.slug}/`}><SanitizedHTML html={tag.name} /></Link>
+                        <Link to={`/tags/${tag.slug}/`}>
+                          <SanitizedHTML html={tag.name} />
+                        </Link>
                       </li>
                     ))}
                   </ul>
@@ -79,7 +81,7 @@ const BlogPost = ({ data }) => {
 
   return (
     <Layout>
-      <Helmet title={`${post.title} | Blog`} />
+      <Helmet title={`${post.title} | Asheville Sandwich Blog`} />
       <BlogPostTemplate
         content={post.content}
         categories={post.categories}
@@ -98,7 +100,7 @@ BlogPost.propTypes = {
   }),
 }
 
-export default lifecycle(methods)(BlogPost);
+export default lifecycle(methods)(BlogPost)
 
 export const pageQuery = graphql`
   fragment PostFields on wordpress__POST {

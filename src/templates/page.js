@@ -51,7 +51,7 @@ const Page = ({ data }) => {
   return (
     <Layout>
       <PageTemplate
-        title={page.title}
+        title={`${page.title} | Asheville Sandwich Blog`}
         content={page.content}
         featured_media={page.featured_media}
       />
