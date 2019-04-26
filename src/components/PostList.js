@@ -36,7 +36,7 @@ export default class IndexPage extends React.Component {
               <div
                 className="post-excerpt"
                 dangerouslySetInnerHTML={{
-                  __html: post.excerpt.replace(/<a class="more-link */, ''),
+                  __html: post.excerpt,
                 }}
               />
               <Link className="read-more button is-small" to={post.slug}>
