@@ -2,11 +2,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Link, graphql } from 'gatsby'
 import { setupNavBtn } from '../tools/global'
-import SanitizedHTML from 'react-sanitized-html';
+import SanitizedHTML from 'react-sanitized-html'
 
 export default class IndexPage extends React.Component {
   componentDidMount() {
-    setupNavBtn();
+    setupNavBtn()
   }
 
   render() {
@@ -21,28 +21,27 @@ export default class IndexPage extends React.Component {
               style={{ border: '1px solid #eaecee', padding: '2em 4em' }}
               key={post.id}
             >
-              <p>
+              <p className="post-list-headline">
                 <Link className="has-text-primary" to={post.slug}>
                   <SanitizedHTML html={post.title} />
                 </Link>
-                <span> &bull; </span>
+                <span> &mdash; </span>
                 <small>
-                  {post.date} - posted by{' '}
+                  {post.date} by{' '}
                   <Link to={`/author/${post.author.slug}`}>
                     {post.author.name}
                   </Link>
                 </small>
               </p>
-              <div>
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html: post.excerpt.replace(/<p class="link-more.*/, ''),
-                  }}
-                />
-                <Link className="button is-small" to={post.slug}>
-                  Keep Reading →
-                </Link>
-              </div>
+              <div
+                className="post-excerpt"
+                dangerouslySetInnerHTML={{
+                  __html: post.excerpt.replace(/<a class="more-link */, ''),
+                }}
+              />
+              <Link className="read-more button is-small" to={post.slug}>
+                Keep Reading →
+              </Link>
             </div>
           ))}
         </div>

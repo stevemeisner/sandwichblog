@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import Helmet from 'react-helmet'
 import { graphql } from 'gatsby'
 import Img from 'gatsby-image'
 import lifecycle from 'react-pure-lifecycle'
@@ -50,8 +51,9 @@ const Page = ({ data }) => {
 
   return (
     <Layout>
+      <Helmet title={`${page.title} | Asheville Sandwich Blog`} />
       <PageTemplate
-        title={`${page.title} | Asheville Sandwich Blog`}
+        title={page.title}
         content={page.content}
         featured_media={page.featured_media}
       />
