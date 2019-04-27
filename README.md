@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/e3cc7cce-8c7b-4c37-8be1-22ff3a17e1cd/deploy-status)](https://app.netlify.com/sites/stoic-fermat-1bc745/deploys)
+
 # Sandwich Blog is 10/10
 
 This is a Gatsby static site deployed to Netlify with Wordpress as the CMS.
