@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link, StaticQuery, graphql } from 'gatsby'
-import github from '../img/github-icon.svg'
 import logo from '../img/logo.svg'
 
 const Navbar = () => (
@@ -18,7 +17,11 @@ const Navbar = () => (
       }
     `}
     render={data => (
-      <nav className="navbar is-transparent" role="navigation" aria-label="main navigation">
+      <nav
+        className="navbar is-transparent"
+        role="navigation"
+        aria-label="main navigation"
+      >
         <div className="container">
           <div className="navbar-brand">
             <Link to="/" className="navbar-item">
@@ -27,10 +30,17 @@ const Navbar = () => (
               </figure>
             </Link>
 
-            <a role="button" className="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="mobileMenu">
-              <span aria-hidden="true"></span>
-              <span aria-hidden="true"></span>
-              <span aria-hidden="true"></span>
+            <a
+              role="button"
+              className="navbar-burger burger"
+              aria-label="menu"
+              aria-expanded="false"
+              data-target="mobileMenu"
+              href="#toggleNav"
+            >
+              <span aria-hidden="true" />
+              <span aria-hidden="true" />
+              <span aria-hidden="true" />
             </a>
           </div>
 
