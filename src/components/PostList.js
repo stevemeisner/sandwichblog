@@ -16,11 +16,7 @@ export default class IndexPage extends React.Component {
       <section className="section">
         <div className="container">
           {posts.map(({ node: post }) => (
-            <div
-              className="content"
-              style={{ border: '1px solid #eaecee', padding: '2em 4em' }}
-              key={post.id}
-            >
+            <div className="content" key={post.id}>
               <p className="post-list-headline">
                 <Link className="has-text-primary" to={post.slug}>
                   <SanitizedHTML html={post.title} />
@@ -36,7 +32,7 @@ export default class IndexPage extends React.Component {
               <div
                 className="post-excerpt"
                 dangerouslySetInnerHTML={{
-                  __html: post.excerpt.replace(/<p class="link-more.*/, ''),
+                  __html: post.excerpt,
                 }}
               />
               <Link className="read-more button is-small" to={post.slug}>
